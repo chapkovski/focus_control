@@ -2,8 +2,8 @@
 {% load staticfiles otree_tags %}
 {% block scripts %}
 <script type="text/javascript">
-  var playerid={{player.pk}};
-  var groupid={{group.id}};
+  var playerpk={{player.pk}};
+  var grouppk={{group.id}};
 </script>
   <script src="{% static "trust/channelconnect.js" %}"></script>
   <script src="{% static "trust/focus.js" %}"></script>
@@ -22,18 +22,7 @@
 <p>PLAYER ID: {{player.id}}</p>
 <p>a new var:{{somevar}}</p>
 <p>focuses pocuses:</p>
-{% for f in focuses %}
-        <li>Value <b>{{ f.infocus}}</b> </li>
 
-{% endfor %}
-{% for f in focuses %}
-      <li>Value <b>{{ f.pk}}</b> </li>
-
-{% endfor %}
-{% for f in focuses %}
-      <li>time <b>{{ f.timefocus}}</b> </li>
-
-{% endfor %}
     {% include Constants.instructions_template %}
 
     {% next_button %}

@@ -108,13 +108,18 @@ if (notIE && !isChromium) {
 
 function whattodo(status) {
   status_message=statuses[status];
+  // whenhappens = models.CharField()
+  //   whathappens = models.CharField()
+  //   wherehappens
+
   var msg = {
-     current_title : $(document).attr('title'),
-     player: playerid,
-     otreegroup: groupid,
-     date: new Date().toString(),
-     status:status_message,
+     wherehappens : $(document).attr('title'),
+     player: playerpk,
+     grouppk: grouppk,
+     whenhappens: new Date().toString(),
+     whathappens: status_message,
    };
+   console.log(msg);
   // console.log(status_message);
   if(socket.readyState === socket.OPEN){
    socket.send(JSON.stringify(msg));

@@ -33,13 +33,14 @@ class Subsession(BaseSubsession):
 
     def before_session_starts(self):   # called each round
         """For each player, create a fixed number of "decision stubs" with random values to be decided upon later."""
-        for p in self.get_players():
-            for _ in range(6):
-                focus = p.focus_set.create()    # create a new Decision object as part of the player's decision set
-                focus.infocus = random.randint(1, 10)
-                focus.timefocus = ''.join(choice(ascii_uppercase) for i in range(12))
-                print('success')
-                focus.save()   # important: save to DB!
+        pass 
+        # for p in self.get_players():
+        #     for _ in range(6):
+        #         focus = p.focus_set.create()    # create a new Decision object as part of the player's decision set
+        #         focus.infocus = random.randint(1, 10)
+        #         focus.timefocus = ''.join(choice(ascii_uppercase) for i in range(12))
+        #         print('success')
+        #         focus.save()   # important: save to DB!
 
 class Group(BaseGroup):
     pass
@@ -71,8 +72,9 @@ class Player(BasePlayer):
 
 class Focus(Model):   # our custom model inherits from Django's base class "Model"
 
-    infocus = models.IntegerField()
-    timefocus = models.CharField()
+    whenhappens = models.CharField()
+    whathappens = models.CharField()
+    wherehappens = models.CharField()
 
     player = ForeignKey(Player)    # creates 1:m relation -> this decision was made by a certain player
 

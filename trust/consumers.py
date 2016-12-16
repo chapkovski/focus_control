@@ -9,32 +9,29 @@ from string import ascii_uppercase
 
 @channel_session
 def ws_message(message,room):
-    # print("MESSAGE MAZAFAKA!")
-    # print(message.content['reply_channel'])
-    # print(message.content['path'])
-    # # print(message.content['bytes'])
-    # print(message.content['text'])
+
     print ("RAW MESSAGE"+message.content['text'])
+
     jsonmessage = json.loads(message.content['text'])
-    # print ('Curent page:'+jsonmessage['current_title'])
-    # print ('Player ID:'+str(jsonmessage['player']))
-    print ('When shit happens:'+str(jsonmessage['date']))
-    print ('What happens:'+str(jsonmessage['status']))
-    print ('Player PK:'+str(jsonmessage['player']))
+    whenhappens = str(jsonmessage['whenhappens'])
+    whathappens = str(jsonmessage['whathappens'])
+    wherehappens = str(jsonmessage['wherehappens'])
+    print ('When shit happens:'+whenhappens)
+    print ('What happens:'+whathappens)
+    print ('Where shit happens:'+wherehappens)
     playerpk=str(jsonmessage['player'])
     myplayer = Player.objects.get(pk=playerpk)
     focus = myplayer.focus_set.create()    # create a new Decision object as part of the player's decision set
-    focus.infocus = random.randint(1, 10)
-    focus.timefocus = ''.join(choice(ascii_uppercase) for i in range(12))
+    focus.whenhappens = whenhappens
+    focus.whathappens = whathappens
+    focus.wherehappens = wherehappens
     print('success')
     focus.save()   # important: save to DB!
     # myfocuses = Focus.objects.get(player=playerpk)
     print(myplayer.participant.code)
     print ("-------")
-    focus_qs = Focus.objects.filter(player__exact=myplayer)
-    for f in focus_qs:
-        print(f.infocus)
-    print ("-------")
+
+    
     # print(message.content['order'])
     # print('END OF MESSAGE MAZAFAKA ==============')
     # text = message.content.get('text')

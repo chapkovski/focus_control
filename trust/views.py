@@ -25,13 +25,7 @@ class MyPage(Page):
         pass
 class Introduction(MyPage):
     def extra_vars_for_template(self):
-        focus_qs = Focus.objects.filter(player__exact=self.player)
-        for f in focus_qs:
-            print(f.infocus)
-        return{'somevar':6789,
-        'focuses':[f for f in focus_qs],
-        }
-
+        pass
 
 class Send(Page):
     """This page is only for P1
@@ -162,7 +156,7 @@ def export_view_json(request):
 
     return JsonResponse(output, safe=False)
 
-    
+
 page_sequence = [
     Introduction,
     Send,
