@@ -1,0 +1,42 @@
+
+<html lang="en">
+<head>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+   <script>
+
+   $(function() {
+    //  $( "p" ).text( "The DOM is now loaded and can be manipulated." );
+     socket = new WebSocket("ws://" + window.location.host + "/chat/");
+ socket.onmessage = function(e) {
+     console.log(e.data);
+     $("p#toadd").append(e.data+"<br>");
+ }
+ socket.onopen = function() {
+     socket.send("hello world");
+ }
+ $( "#filka" ).click(function() {
+   $("p#toadd").append("Some appended text.<br>");
+ socket.send($('input#facka').val() );
+   console.log( $('input#facka').val() );
+ });
+   });
+
+   </script>
+</head>
+<body>
+  filka pilka
+<p id="toadd"></p>
+
+hellow
+<br>
+django var here:{{ slyakot }}
+<br>
+end of story
+<br>
+<p>
+  {% for f in focuses %}
+    <p>{{f.whathappens}}</p>
+  {% endfor %}</p>
+
+</body>
+</html>
