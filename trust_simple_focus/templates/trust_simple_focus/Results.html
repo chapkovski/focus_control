@@ -1,0 +1,23 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block content %}
+
+
+    <p>
+        You sent Participant B {{ player.sent_amount }}.
+        Participant B returned {{player.sent_back_amount}}.
+    </p>
+
+
+
+    <p>
+    Therefore, your total payoff is {{player.payoff}}.
+    </p>
+
+      {% next_button %}
+{% endblock %}

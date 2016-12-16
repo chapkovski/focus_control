@@ -1,0 +1,21 @@
+{% extends 'otree/WaitPage.html' %}
+{% load staticfiles otree_tags %}
+{% block scripts %}
+<script type="text/javascript">
+  var playerid={{player.id}};
+  var groupid={{group.id}};
+</script>
+  <script src="{% static "trust/channelconnect.js" %}"></script>
+{% endblock %}
+
+{% block title %}whatever{% endblock %}
+{% block content %}
+    {{ body_text }}
+    <p>
+        Wait, mazafaka! My custom content here.
+    </p>
+    <p>we will show the progress here:</p>
+    <div id="msgArea"></div>
+
+<div>
+{% endblock %}

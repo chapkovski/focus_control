@@ -1,0 +1,25 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Final results
+{% endblock %}
+
+{% block content %}
+
+
+    <table class="table-condensed" style="width:500px; margin-top:20px;">
+
+
+        <tr><td>Thus in total you earned:</td><td>{{ cumpayoff}}</td></tr>
+
+    </table>
+    <p></p>
+
+    {% next_button %}
+
+
+    {% include Constants.instructions_template %}
+
+
+{% endblock %}
