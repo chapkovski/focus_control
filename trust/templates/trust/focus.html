@@ -6,19 +6,19 @@
 
    $(function() {
     //  $( "p" ).text( "The DOM is now loaded and can be manipulated." );
-     socket = new WebSocket("ws://" + window.location.host + "/chat/");
+     socket = new WebSocket("ws://" + window.location.host + "/export/");
  socket.onmessage = function(e) {
      console.log(e.data);
-     $("p#toadd").append(e.data+"<br>");
+     //$("p#toadd").append(e.data+"<br>");
  }
  socket.onopen = function() {
      socket.send("hello world");
  }
- $( "#filka" ).click(function() {
-   $("p#toadd").append("Some appended text.<br>");
- socket.send($('input#facka').val() );
-   console.log( $('input#facka').val() );
- });
+ // $( "#filka" ).click(function() {
+ //   $("p#toadd").append("Some appended text.<br>");
+ // socket.send($('input#facka').val() );
+ //   console.log( $('input#facka').val() );
+ // });
    });
 
    </script>

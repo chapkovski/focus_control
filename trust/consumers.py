@@ -7,6 +7,7 @@ from random import choice
 from string import ascii_uppercase
 
 
+
 @channel_session
 def ws_message(message,room):
 
@@ -30,8 +31,8 @@ def ws_message(message,room):
     # myfocuses = Focus.objects.get(player=playerpk)
     print(myplayer.participant.code)
     print ("-------")
+    Group('export').send({'text': whathappens})
 
-    
     # print(message.content['order'])
     # print('END OF MESSAGE MAZAFAKA ==============')
     # text = message.content.get('text')
@@ -58,10 +59,23 @@ def ws_message(message,room):
 @channel_session
 def ws_connect(message,room):
     print("CONNECT MAZAFAKA!!!!")
-    Group("chat").add(message.reply_channel)
+    Group("export").add(message.reply_channel)
 
 
 # Connected to websocket.disconnect
 def ws_disconnect(message,room):
     print("DISCONNECT MAZAFAKA!")
-    Group("chat").discard(message.reply_channel)
+    Group("export").discard(message.reply_channel)
+
+def ws_message_export(message):
+    print ('export! message!!')
+
+
+def ws_connect_export(message):
+    Group("export").add(message.reply_channel)
+    print ('export! connect!!')
+
+def ws_disconnect_export(message):
+
+    Group("export").discard(message.reply_channel)
+    print ('export! disconnect!!')
